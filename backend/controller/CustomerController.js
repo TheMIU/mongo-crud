@@ -49,6 +49,23 @@ const customerController = {
             res.status(500).json({ error: "Something went wrong" });
         }
     },
+
+    // delete
+    deleteCustomer: async function (req, res, next) {
+        try {
+            const customerId = req.params.id;
+            const result = await Customer.deleteOne({ id: customerId });
+
+            if (result.deletedCount == 0) {
+                return res.status(404).json({ error: 'not found' });
+            }
+            res.status(200).json({ message: 'deleted success' });
+
+        } catch (error) {
+            console.log("Error ", error);
+            res.status(500).json({ error: "Something went wrong" });
+        }
+    },
 }
 
 module.exports = customerController;

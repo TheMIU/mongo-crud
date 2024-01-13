@@ -14,4 +14,7 @@ router.get('/all', customerController.allCustomers);
 // update
 router.put('/update/:id', customerController.updateCustomer);
 
+// delete
+router.delete('/delete/:id', customerController.deleteCustomer);
+
 module.exports = router;
