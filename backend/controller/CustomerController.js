@@ -15,11 +15,21 @@ const customerController = {
 
     // find (get one)  
     findCustomer: async function (req, res, next) {
-        console.log(req.params.id);
         try {
             const customerId = req.params.id;
             const customer = await Customer.find({ id: customerId });
             res.status(200).json(customer);
+        } catch (error) {
+            console.log("Error ", error);
+            res.status(500).json({ error: "Something went wrong" });
+        }
+    },
+
+    // get all  
+    allCustomers: async function (req, res, next) {
+        try {
+            const findAll = await Customer.find();
+            res.status(200).json(findAll);
         } catch (error) {
             console.log("Error ", error);
             res.status(500).json({ error: "Something went wrong" });
