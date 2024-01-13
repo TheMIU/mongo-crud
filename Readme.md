@@ -19,3 +19,18 @@ MONGODB_URL=mongodb+srv://<username>:<password>@<cluster>.auajvjv.mongodb.net/?r
 
 * `npm install mongoose`
 * <a href='https://github.com/TheMIU/mongo-crud/commit/9d656bc4f5bae7e8e0fe6e05a5e21d09b54f55f8'> mongo db connect </a>
+
+<br>
+
+* <a href='https://github.com/TheMIU/mongo-crud/commit/8ad4a9407731fa24255f473fd51a76abea3b9a65'> setup for perform CRUD operations (add customer) </a>
+* check using Postman <br>
+Post request URL : http://localhost:4000/customer/add  <br>
+Sample data : 
+    <pre>
+    {
+        "id": "1",
+        "name": "John",
+        "address": "New York"
+    }</pre>
+
+* Others requests are similar to that.
