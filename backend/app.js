@@ -4,6 +4,10 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+// connect to db
+const dbConnection = require('./db/DBConnection');
+dbConnection();
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
