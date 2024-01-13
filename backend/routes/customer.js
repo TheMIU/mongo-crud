@@ -5,4 +5,7 @@ const customerController = require('../controller/CustomerController');
 // add
 router.post('/add', customerController.addCustomer);
 
+// get one
+router.get('/find/:id', customerController.findCustomer);
+
 module.exports = router;
