@@ -35,6 +35,20 @@ const customerController = {
             res.status(500).json({ error: "Something went wrong" });
         }
     },
+
+    // update
+    updateCustomer: async function (req, res, next) {
+        try {
+            const cusId = req.params.id;
+            const customerData = req.body;
+
+            const customer = await Customer.findOneAndUpdate({ id: cusId }, customerData, { new: true }); // updated product return true 
+            res.status(200).json(customer);
+        } catch (error) {
+            console.log("Error ", error);
+            res.status(500).json({ error: "Something went wrong" });
+        }
+    },
 }
 
 module.exports = customerController;

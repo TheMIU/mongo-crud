@@ -11,4 +11,7 @@ router.get('/find/:id', customerController.findCustomer);
 // get all 
 router.get('/all', customerController.allCustomers);
 
+// update
+router.put('/update/:id', customerController.updateCustomer);
+
 module.exports = router;
