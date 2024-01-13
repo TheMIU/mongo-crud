@@ -42,8 +42,12 @@ const customerController = {
             const cusId = req.params.id;
             const customerData = req.body;
 
-            const customer = await Customer.findOneAndUpdate({ id: cusId }, customerData, { new: true }); // updated product return true 
+            const updatedCustomer = await Customer.findOneAndUpdate({ id: cusId }, customerData, { new: true }); // updated product return true 
+            if (!updatedCustomer) {
+                return res.status(404).json({ error: 'not found' });
+            }
             res.status(200).json(customer);
+            
         } catch (error) {
             console.log("Error ", error);
             res.status(500).json({ error: "Something went wrong" });

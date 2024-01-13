@@ -33,4 +33,6 @@ Sample data :
         "address": "New York"
     }</pre>
 
-* Others requests are similar to that.
+* Others requests are similar to that.  
+<a href='https://github.com/TheMIU/mongo-crud/blob/main/backend/routes/customer.js'> customer.js</a> , 
+<a href='https://github.com/TheMIU/mongo-crud/blob/main/backend/controller/CustomerController.js'> CustomerController.js </a>
