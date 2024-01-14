@@ -1,6 +1,6 @@
 ## Setup MongoDB 
 
-### Steps
+### Backend
 
 * `npx express-generator`
 * `npm install`
@@ -36,3 +36,10 @@ Sample data :
 * Others requests are similar to that.  
 <a href='https://github.com/TheMIU/mongo-crud/blob/main/backend/routes/customer.js'> customer.js</a> , 
 <a href='https://github.com/TheMIU/mongo-crud/blob/main/backend/controller/CustomerController.js'> CustomerController.js </a>
+
+### Access Backend from Frontend
+
+* create react app + <a href='https://docs.google.com/document/d/10LhKBZAp48qX8Ssb3ZdXgjIVL45jjLGOTNbuDSRcqvc/edit#heading=h.1vwgs3kdd3ny'> tailwind css </a>
+* `npm install axios` (frontend) 
+* `npm install cors` (backend)
+* 
