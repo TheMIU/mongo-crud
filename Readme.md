@@ -1,4 +1,6 @@
 ## MongoDB CRUD Operations with React
+
+Simple CRUD operations test with MongoDB, using React Frontend and Express Backend
 <img src='mongo-crud-preview.png'>
 
 ## Setup MongoDB 
