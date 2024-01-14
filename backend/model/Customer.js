@@ -3,13 +3,13 @@ const mongoose = require('mongoose');
 const CustomerModel = mongoose.Schema(
     {
         "id": {
-            require: true,
+            required: true,
             type: Number,
             unique: true,
             index: true // for better performance
         },
         "name": {
-            require: true,
+            required: true,
             type: String
         },
         "address": {

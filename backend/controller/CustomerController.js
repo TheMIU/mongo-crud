@@ -9,7 +9,7 @@ const customerController = {
             res.status(200).json(customer);
         } catch (error) {
             console.log("Error ", error);
-            res.status(500).json({ error: "Something went wrong" });
+            res.status(500).json({"error":"add failed"});
         }
     },
 
@@ -21,7 +21,7 @@ const customerController = {
             res.status(200).json(customer);
         } catch (error) {
             console.log("Error ", error);
-            res.status(500).json({ error: "Something went wrong" });
+            res.status(500).json(error);
         }
     },
 
@@ -32,7 +32,7 @@ const customerController = {
             res.status(200).json(findAll);
         } catch (error) {
             console.log("Error ", error);
-            res.status(500).json({ error: "Something went wrong" });
+            res.status(500).json(error);
         }
     },
 
@@ -50,7 +50,7 @@ const customerController = {
             
         } catch (error) {
             console.log("Error ", error);
-            res.status(500).json({ error: "Something went wrong" });
+            res.status(500).json(error);
         }
     },
 
@@ -67,7 +67,7 @@ const customerController = {
 
         } catch (error) {
             console.log("Error ", error);
-            res.status(500).json({ error: "Something went wrong" });
+            res.status(500).json(error);
         }
     },
 }
