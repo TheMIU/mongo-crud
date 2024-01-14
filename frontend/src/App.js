@@ -3,107 +3,82 @@ import axios from 'axios';
 import './App.css';
 import CustomerTable from './components/CustomerTable';
 
-function App() {
-  // load initially
-  useEffect(() => {
-    getAll();
-  }, []);
+const baseURL = 'http://localhost:4000/customer';
 
+function App() {
   const [data, setData] = useState([]);
   const [idInput, setIdInput] = useState('');
   const [nameInput, setNameInput] = useState('');
   const [addressInput, setAddressInput] = useState('');
 
-  // get all
-  const getAll = async () => {
-    console.log('get all');
+  // load initially
+  useEffect(() => {
+    getAll();
+  }, []);
+
+  const getAll = async () => fetchData('/all');
+  const findCustomer = async () => fetchData(`/find/${idInput}`);
+  const addCustomer = async () => postData('/add', { id: idInput, name: nameInput, address: addressInput });
+  const updateCustomer = async () => putData(`/update/${idInput}`, { id: idInput, name: nameInput, address: addressInput });
+  const deleteCustomer = async () => deleteData(`/delete/${idInput}`);
+
+  // get all & find
+  const fetchData = async (endpoint) => {
     try {
-      const response = await axios.get('http://localhost:4000/customer/all');
-      console.log(response.data);
-      if (response.data.length == 0) {
-        alert('no data found');
+      const response = await axios.get(baseURL + endpoint);
+      if (response.data.length === 0) {
+        alert('No data found');
       } else {
         setData(response.data);
       }
-
     } catch (error) {
-      alert('Error ',error.response.data.error);
-    }
-  };
-
-  // find
-  const findCustomer = async () => {
-    console.log('find');
-    try {
-      const response = await axios.get(`http://localhost:4000/customer/find/${idInput}`);
-      console.log(response.data);
-
-      if (response.data.length == 0) {
-        alert('no data found');
-        getAll();
-      } else {
-        setData(response.data);
-      }
-
-    } catch (error) {
-      alert('Error ',error.response.data.error);
+      alert(`Error: ${error.response?.data?.error || error.message}`);
     }
   };
 
   // add
-  const addCustomer = async () => {
-    console.log('add');
+  const postData = async (endpoint, payload) => {
     try {
-      const newCustomer = {
-        id: idInput,
-        name: nameInput,
-        address: addressInput,
-      };
-      const response = await axios.post('http://localhost:4000/customer/add', newCustomer);
+      const response = await axios.post(baseURL + endpoint, payload);
       console.log(response.data);
-      alert('done');
       resetTable();
-
     } catch (error) {
-      console.log(error);
-      alert('Error ',error.response.data.error);
+      alert(`Error: ${error.response?.data?.error || error.message}`);
     }
   };
 
   // update
-  const updateCustomer = async () => {
-    console.log('update');
+  const putData = async (endpoint, payload) => {
     try {
-      const updatedCustomer = {
-        id: idInput,
-        name: nameInput,
-        address: addressInput,
-      };
-      const response = await axios.put(`http://localhost:4000/customer/update/${idInput}`, updatedCustomer);
-      alert('done', response.data.message);
+      const response = await axios.put(baseURL + endpoint, payload);
+      alert('Done', response.data.message);
       resetTable();
-
     } catch (error) {
-      alert('Error ',error.response.data.error);
+      alert(`Error: ${error.response?.data?.error || error.message}`);
     }
   };
 
   // delete
-  const deleteCustomer = async () => {
-    console.log('delete');
+  const deleteData = async (endpoint) => {
     try {
-      const response = await axios.delete(`http://localhost:4000/customer/delete/${idInput}`);
+      const response = await axios.delete(baseURL + endpoint);
       alert(response.data.message);
       resetTable();
-
     } catch (error) {
-      alert('Error ',error.response.data.error);
+      alert(`Error: ${error.response?.data?.error || error.message}`);
     }
+  };
+
+  const resetTable = () => {
+    getAll();
+    setIdInput('');
+    setNameInput('');
+    setAddressInput('');
   };
 
   return (
     <div className="App">
-
+      <div className='title'> MongoDB CRUD Operations with React </div>
       <div className='bg-slate-400 flex rounded'>
         <input
           type="number" required placeholder='ID' value={idInput} className='custom-input'
@@ -119,7 +94,7 @@ function App() {
         />
       </div>
 
-      <div>
+      <div className='text-center'>
         <button onClick={getAll} className='custom-button bg-blue-600'>Get all</button>
         <button onClick={findCustomer} className='custom-button bg-gray-600'>Find</button>
         <button onClick={addCustomer} className='custom-button bg-green-600'>Add</button>
@@ -127,19 +102,9 @@ function App() {
         <button onClick={deleteCustomer} className='custom-button bg-red-600'>Delete</button>
       </div>
 
-
-      <br />
       <CustomerTable data={data} />
     </div>
   );
-
-  function resetTable() {
-    getAll();
-    // clear all input fields
-    setIdInput('');
-    setNameInput('');
-    setAddressInput('');
-  }
 }
 
 export default App;

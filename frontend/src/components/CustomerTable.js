@@ -3,7 +3,7 @@ import React from 'react';
 
 const CustomerTable = ({ data }) => {
   return (
-    <table className="w-[100%] bg-white border">
+    <table className="w-[100%] bg-white border mt-3">
       <thead>
         <tr>
           <th className="py-2 px-4 border bg-slate-400 text-white">ID</th>
