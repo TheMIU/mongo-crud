@@ -40,6 +40,7 @@ Sample data :
 ### Access Backend from Frontend
 
 * create react app + <a href='https://docs.google.com/document/d/10LhKBZAp48qX8Ssb3ZdXgjIVL45jjLGOTNbuDSRcqvc/edit#heading=h.1vwgs3kdd3ny'> tailwind css </a>
-* `npm install axios` (frontend) 
 * `npm install cors` (backend)
-* 
+* <a href='https://github.com/TheMIU/mongo-crud/commit/d3185154471efbe1b581442875e21f84a42a962f'> Enable CORS </a> (backend)
+* `npm install axios` (frontend) 
+* Create frontend to manipulate the data.
