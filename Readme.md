@@ -15,7 +15,7 @@ Simple CRUD operations test with MongoDB, using React Frontend and Express Backe
 <br>
 
 * `npm install dotenv`
-* create .env <br>
+* create .env   (my .env file is added to gitignore, so create a new .env file in backend with your MONGODB_URL)<br>
 `PORT=4000 
 MONGODB_URL=mongodb+srv://<username>:<password>@<cluster>.auajvjv.mongodb.net/?retryWrites=true&w=majority` 
 * <a href='https://github.com/TheMIU/mongo-crud/commit/f7c78d903e7c66d1cbfeb173398879d9556739b3'> .env config </a>
